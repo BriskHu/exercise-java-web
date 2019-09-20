@@ -1,5 +1,4 @@
 # 
-git@github.com:BriskHu/exercise-java-web.git
 
 
 git remote add origin git@github.com:BriskHu/exercise-java-web.git
