@@ -55,6 +55,11 @@ git merge dev
 ```
 git mv -f pathname pathName
 ```
+如果这个指令不能生效，可以先将git的大小写不敏感设置成false，然后再重新add、commit试试。
+```
+git config core.ignorecase false
+```
+
 
 ### 清空密码
 更换密码后需要清空原来密码的缓存
