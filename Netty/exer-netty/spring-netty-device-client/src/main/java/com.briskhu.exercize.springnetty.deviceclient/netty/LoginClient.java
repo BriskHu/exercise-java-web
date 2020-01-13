@@ -23,9 +23,9 @@ public class LoginClient {
     private static final Logger LOGGER = LoggerFactory.getLogger(LoginClient.class);
 
     /* ---------------------------------------- fileds ---------------------------------------- */
-    private int readerIdleTimeSeconds = (int) PropertiesUtil.getFileProperties().get("readerIdleTimeSeconds");
-    private int writerIdleTimeSeconds = (int) PropertiesUtil.getFileProperties().get("writerIdleTimeSeconds");
-    private int allIdleTimeSeconds = (int) PropertiesUtil.getFileProperties().get("allIdleTimeSeconds");
+    private Integer readerIdleTimeSeconds = Integer.parseInt(PropertiesUtil.getFileProperties().getProperty("readerIdleTimeSeconds"));
+    private Integer writerIdleTimeSeconds = Integer.parseInt(PropertiesUtil.getFileProperties().getProperty("writerIdleTimeSeconds"));
+    private Integer allIdleTimeSeconds = Integer.parseInt(PropertiesUtil.getFileProperties().getProperty("allIdleTimeSeconds"));
 
 
     /* ---------------------------------------- methods ---------------------------------------- */

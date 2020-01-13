@@ -27,6 +27,7 @@ public class DeviceClient {
 
     /* ---------------------------------------- methods ---------------------------------------- */
     public static void main(String[] args){
+        LOGGER.info("设备开始运行……");
         DeviceClient deviceClient = new DeviceClient();
         try {
             deviceClient.deviceLogin();
@@ -36,6 +37,7 @@ public class DeviceClient {
     }
 
     public void deviceLogin() throws InterruptedException {
+        LOGGER.info("[deviceLogin] 执行设备登录操作。");
         LoginClient loginClient = new LoginClient();
         Channel channel = loginClient.connect(loginHost);
         if (channel != null){

@@ -1,0 +1,23 @@
+# 开发环境
+spring:
+  profiles: dev
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: 123456
+    database: 8
+    timeout: 3000ms
+    lettuce:
+      pool:
+        min-idle: 3
+        max-active: 18
+        max-wait: 100ms
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+
+
+
+

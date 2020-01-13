@@ -1,0 +1,32 @@
+# 全局配置（所有环境的默认配置）
+spring:
+  application:
+    name: DeviceLoginServer
+  profiles:
+    active: dev
+
+loginServer:
+  port: 9918
+  bossCount: 1
+  workerCount: 10
+
+reader:
+  idle:
+    time:
+      seconds: 30
+writer:
+  idle:
+    time:
+      seconds: 0
+all:
+  idle:
+    time:
+      seconds: 30
+logging:
+  level:
+    com.briskhu.exercize.springnetty: debug
+
+
+
+
+
