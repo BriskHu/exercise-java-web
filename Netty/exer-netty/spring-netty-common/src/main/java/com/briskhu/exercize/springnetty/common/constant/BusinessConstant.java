@@ -1,16 +1,20 @@
 package com.briskhu.exercize.springnetty.common.constant;
 
 /**
- * netty使用的常量<p/>
+ * 业务常量<p/>
  *
  * @author Brisk Hu
  * created on 2019-12-14
  **/
-public interface NettyConstant {
+public interface BusinessConstant {
 
-    int NETTY_MAX_FRAME_SIZE = Integer.MAX_VALUE;
-    int NETTY_TIMEOUT_MILLIS = 2000;  //ms
-    int SUCCESS_RESULT_CODE = 0;
+    interface Netty{
+        int NETTY_MAX_FRAME_SIZE = Integer.MAX_VALUE;
+        int NETTY_TIMEOUT_MILLIS = 2000;  //ms
+        int SUCCESS_RESULT_CODE = 0;
+    }
+
+
 
     /**
      * netty消息常量<p/>

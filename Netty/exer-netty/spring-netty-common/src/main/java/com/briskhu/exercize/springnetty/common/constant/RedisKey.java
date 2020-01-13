@@ -10,6 +10,9 @@ public interface RedisKey {
 
     String COMMON_PREFIX = "EarthBeat:";
 
+    /**
+     * hash结构的域字段
+     */
     String F_IP = "ip";
     String F_TOKEN = "token";
 

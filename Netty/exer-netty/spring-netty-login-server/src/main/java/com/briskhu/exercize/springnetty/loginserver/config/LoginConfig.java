@@ -23,7 +23,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * <p/>
+ * 登录服务器配置<p/>
  *
  * @author Brisk Hu
  * created on 2019-12-08

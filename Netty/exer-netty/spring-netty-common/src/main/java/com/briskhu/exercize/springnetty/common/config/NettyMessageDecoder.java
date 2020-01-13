@@ -1,6 +1,6 @@
 package com.briskhu.exercize.springnetty.common.config;
 
-import com.briskhu.exercize.springnetty.common.constant.NettyConstant;
+import com.briskhu.exercize.springnetty.common.constant.BusinessConstant;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
@@ -25,7 +25,7 @@ public class NettyMessageDecoder extends MessageToMessageDecoder<ByteBuf>  {
     private Charset charset;
 
     public NettyMessageDecoder() {
-        this.charset = Charset.defaultCharset();
+        this.charset = Charset.forName("UTF-8");
     }
 
     public NettyMessageDecoder(Charset charset) {
@@ -39,8 +39,8 @@ public class NettyMessageDecoder extends MessageToMessageDecoder<ByteBuf>  {
     @Override
     protected void decode(ChannelHandlerContext channelHandlerContext, ByteBuf msgByteBuf, List<Object> outList) throws Exception {
         String msgStr = msgByteBuf.toString(this.charset);
-        if (msgStr != null && msgStr.startsWith(NettyConstant.MessageConstant.NETTY_MSG_HEADER)){
-            msgStr = msgStr.substring(NettyConstant.MessageConstant.NETTY_MSG_HEADER.length());
+        if (msgStr != null && msgStr.startsWith(BusinessConstant.MessageConstant.NETTY_MSG_HEADER)){
+            msgStr = msgStr.substring(BusinessConstant.MessageConstant.NETTY_MSG_HEADER.length());
             outList.add(msgStr);
         }
     }
