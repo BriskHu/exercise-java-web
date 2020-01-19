@@ -13,14 +13,14 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 /**
- * 登录服务器<p/>
+ * 登录服务组件的netty启动器<p/>
  *
  * @author Brisk Hu
  * created on 2019-12-08
  **/
 @Component
-public class LoginServer {
-    private static final Logger LOGGER = LoggerFactory.getLogger(LoginServer.class);
+public class LoginServerLauncher {
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoginServerLauncher.class);
 
     /* ---------------------------------------- fileds ---------------------------------------- */
     @Value("${loginServer.port}")

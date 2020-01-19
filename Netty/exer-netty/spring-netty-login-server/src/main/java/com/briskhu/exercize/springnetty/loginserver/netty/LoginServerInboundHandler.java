@@ -1,7 +1,7 @@
-package com.briskhu.exercize.springnetty.loginserver.handler;
+package com.briskhu.exercize.springnetty.loginserver.netty;
 
 import com.alibaba.fastjson.JSON;
-import com.briskhu.exercize.springnetty.common.Dto.DeviceLoginReqDto;
+import com.briskhu.exercize.springnetty.common.dto.req.device.DeviceLoginReqDto;
 import com.briskhu.exercize.springnetty.common.constant.CommonConstant;
 import com.briskhu.exercize.springnetty.common.constant.RedisKey;
 import com.briskhu.exercize.springnetty.common.constant.MsgCode;
@@ -66,7 +66,7 @@ public class LoginServerInboundHandler extends SimpleChannelInboundHandler<Objec
                         LOGGER.debug("[channelRead0] 向连接者发送回执。");
                     }
 
-                    if (deviceLoginReqDto.getCode().equals(MsgCode.Device.APP_SERVER_CONNECT.getReplyCode() + CommonConstant.Str.EMPTY)) {
+                    if (deviceLoginReqDto.getCode().equals(MsgCode.Netty.APP_SERVER_CONNECT.getReplyCode() + CommonConstant.Str.EMPTY)) {
                         AppServerNettyContext.addConnectChannel(channelHandlerContext.channel());
                         return;
                     }

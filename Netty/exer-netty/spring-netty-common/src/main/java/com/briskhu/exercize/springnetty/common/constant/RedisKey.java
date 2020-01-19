@@ -22,8 +22,16 @@ public interface RedisKey {
      */
     interface Device {
         /**
-         * 设备鉴权信息-hash
-         * key：$+{deviceSn}
+         * 设备相关的域字段
+         */
+        String F_DN = "dn";
+        String F_PIN = "pin";
+        String F_MAC = "mac";
+
+
+        /**
+         * 设备鉴权信息 —— hash
+         * key：$+{dn}
          * field-value: ip  deviceIp(String)
          * field-value: token   deviceToken(String)
          *
@@ -31,9 +39,20 @@ public interface RedisKey {
         String D_AUTH = COMMON_PREFIX + "d:auth:";
 
         /**
-         * 在线设备集-set
+         * 在线设备集 —— set
          *
          */
         String D_ONLINE = COMMON_PREFIX + "d:online";
+
+        /**
+         * 设备基础信息 —— hash
+         * key：$+{dn}
+         * field-value: pin  pin(String)
+         * field-value: mac  mac(String)
+         *
+         */
+        String D_BASE = COMMON_PREFIX + "d:base:"; 
+
+
     }
 }

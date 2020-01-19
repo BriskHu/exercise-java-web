@@ -4,7 +4,7 @@ package com.briskhu.exercize.springnetty.common.constant;
  * 业务常量<p/>
  *
  * @author Brisk Hu
- * created on 2019-12-14
+ * created on 2019-12-18
  **/
 public interface BusinessConstant {
 

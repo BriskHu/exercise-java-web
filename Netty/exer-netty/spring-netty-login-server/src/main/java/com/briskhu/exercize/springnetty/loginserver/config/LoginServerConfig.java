@@ -3,7 +3,7 @@ package com.briskhu.exercize.springnetty.loginserver.config;
 import com.briskhu.exercize.springnetty.common.config.NettyMessageDecoder;
 import com.briskhu.exercize.springnetty.common.config.NettyMessageEncoder;
 import com.briskhu.exercize.springnetty.common.constant.BusinessConstant;
-import com.briskhu.exercize.springnetty.loginserver.handler.LoginServerInboundHandler;
+import com.briskhu.exercize.springnetty.loginserver.netty.LoginServerInboundHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
@@ -29,8 +29,8 @@ import org.springframework.context.annotation.Configuration;
  * created on 2019-12-08
  **/
 @Configuration
-public class LoginConfig {
-    private static final Logger LOGGER = LoggerFactory.getLogger(LoginConfig.class);
+public class LoginServerConfig {
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoginServerConfig.class);
 
     /* ---------------------------------------- fileds ---------------------------------------- */
     @Value("${loginServer.bossCount}")

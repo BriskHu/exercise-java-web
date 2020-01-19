@@ -1,8 +1,6 @@
-package com.briskhu.exercize.springnetty.common.Dto;
+package com.briskhu.exercize.springnetty.common.dto.req.device;
 
 import lombok.Data;
-
-import java.io.Serializable;
 
 /**
  * 设备登录请求Dto<p/>
@@ -11,7 +9,7 @@ import java.io.Serializable;
  * created on 2019-12-23
  **/
 @Data
-public class DeviceLoginReqDto extends BaseDeviceToLoginServerDto{
+public class DeviceLoginReqDto extends BaseDeviceToLoginServerReqDto {
     private static final long serialVersionUID = -9499177398480109L;
 
     /**

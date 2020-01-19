@@ -2,6 +2,7 @@ package com.briskhu.exercize.springnetty.common.exception;
 
 import com.briskhu.exercize.springnetty.common.constant.IMsgCode;
 import com.briskhu.exercize.springnetty.common.constant.MsgCode;
+import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,29 +12,30 @@ import org.slf4j.LoggerFactory;
  * @author Brisk Hu
  * created on 2019-12-10
  **/
-public abstract class AbstractException extends RuntimeException{
-    private static final Logger LOGGER = LoggerFactory.getLogger(AbstractException.class);
+@Data
+public abstract class BaseException extends RuntimeException{
+    private static final Logger LOGGER = LoggerFactory.getLogger(BaseException.class);
 
     /* ---------------------------------------- fileds ---------------------------------------- */
-    protected IMsgCode replyCode;
+    protected IMsgCode msgCode;
 
 
     /* ---------------------------------------- methods ---------------------------------------- */
-    public AbstractException(){ }
+    public BaseException(){ }
 
-    protected AbstractException(String msg){
+    protected BaseException(String msg){
         super(msg);
-        replyCode = MsgCode.Netty.UNKNOWN_ERR;
+        msgCode = MsgCode.Common.UNKNOWN_ERR;
     }
 
-    protected AbstractException(IMsgCode replyCode){
-        super(replyCode.getMsg());
-        this.replyCode = replyCode;
+    protected BaseException(IMsgCode msgCode){
+        super(msgCode.getMsg());
+        this.msgCode = msgCode;
     }
 
-    protected AbstractException(IMsgCode replyCode, String msg){
+    protected BaseException(IMsgCode msgCode, String msg){
         super(msg);
-        this.replyCode = replyCode;
+        this.msgCode = msgCode;
     }
 
 }

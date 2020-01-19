@@ -9,7 +9,7 @@ import com.briskhu.exercize.springnetty.common.constant.IMsgCode;
  * @author Brisk Hu
  * created on 2019-12-10
  **/
-public class NettyException extends AbstractException {
+public class NettyException extends BaseException {
 
     /* ---------------------------------------- fileds ---------------------------------------- */
     

@@ -1,4 +1,4 @@
-package com.briskhu.exercize.springnetty.common.Dto;
+package com.briskhu.exercize.springnetty.common.dto.info;
 
 import lombok.Data;
 import lombok.ToString;
