@@ -83,7 +83,7 @@ public class LoginServerConfig {
                         pipeline.addLast("encoder", new NettyMessageEncoder());
                         // server端检测到超时，会调用ConnectorChannelInboundHandler的userEventTriggered方法
                         pipeline.addLast("timeout", new IdleStateHandler(readerIdleSeconds, writerIdleSeconds, allIdleSeconds));
-                        pipeline.addLast(loginServerInboundHandler);
+                        pipeline.addLast("handler", loginServerInboundHandler);
                     }
                 })
 

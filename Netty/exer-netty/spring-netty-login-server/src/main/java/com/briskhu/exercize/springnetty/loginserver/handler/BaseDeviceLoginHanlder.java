@@ -46,6 +46,7 @@ public abstract class BaseDeviceLoginHanlder<Req extends DeviceLoginDataDto, Res
      */
     @Override
     public ListenableFuture<ServerToDeviceRespDto> asynHandleMessage(DeviceLoginReqDto deviceLoginReqDto) {
+        LOGGER.info("[asynHandleMessage] start: deviceLoginReqDto = {}.", deviceLoginReqDto);
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         String secretKey = null;
@@ -77,13 +78,17 @@ public abstract class BaseDeviceLoginHanlder<Req extends DeviceLoginDataDto, Res
                 serverToDeviceDataDto = new ServerToDeviceDataDto(MsgCode.Common.PARAM_NULL, dn);
                 return new AsyncResult<>(initServerRespDto(serverToDeviceDataDto, secretKey, secretCipher));
             }
+
             //TODO-Brisk 处理数据解密
+
             Req reqDataDto = JSON.parseObject(data, this.getReqDataClass());
             if (reqDataDto != null) {
                 final String finalKey = secretKey;
                 final String finalCipher = secretCipher;
 
                 SettableListenableFuture<ServerToDeviceRespDto> respFuture = new SettableListenableFuture<>();
+
+                // 调用子类实现的具体 handleReqData 方法处理子类的业务逻辑
                 this.handleReqData(reqDataDto, dn, secretCipher).addCallback(
                         respData -> {
                             ServerToDeviceRespDto serverToDeviceRespDto = this.initServerRespDto(respData, finalKey, finalCipher);
@@ -113,13 +118,15 @@ public abstract class BaseDeviceLoginHanlder<Req extends DeviceLoginDataDto, Res
         // 处理业务异常
         catch (ApiException ae) {
             LOGGER.error("[asynHandleMessage] 消息处理发生异常：code = {}，msg = {}.", ae.getMsgCode().getReplyCode(), ae.getMsgCode().getMsg());
-            ServerToDeviceDataDto respData = new ServerToDeviceDataDto(ae.getMsgCode(), dn);
+            ae.printStackTrace();
+            serverToDeviceDataDto = new ServerToDeviceDataDto(ae.getMsgCode(), dn);
             return new AsyncResult<>(initServerRespDto(serverToDeviceDataDto, secretKey, secretCipher));
         }
         // 处理其他未知异常
         catch (Exception e){
             LOGGER.error("[asynHandleMessage] 消息处理发生异常：cause = {}，msg = {}.", e.getCause(), e.getMessage());
-            ServerToDeviceDataDto respData = new ServerToDeviceDataDto(MsgCode.Common.UNKNOWN_ERR, dn);
+            e.printStackTrace();
+            serverToDeviceDataDto = new ServerToDeviceDataDto(MsgCode.Common.UNKNOWN_ERR, dn);
             return new AsyncResult<>(initServerRespDto(serverToDeviceDataDto, secretKey, secretCipher));
         }
         // 关闭try
@@ -130,6 +137,12 @@ public abstract class BaseDeviceLoginHanlder<Req extends DeviceLoginDataDto, Res
         }
     }
 
+    /**
+     * 加密秘钥
+     * 默认取的pin码的前16位。
+     * @param pin
+     * @return
+     */
     private String getSecretKey(String pin) {
         try {
             return pin.substring(0, 16);
@@ -138,6 +151,12 @@ public abstract class BaseDeviceLoginHanlder<Req extends DeviceLoginDataDto, Res
         }
     }
 
+    /**
+     * 加密秘钥
+     * 默认去pin码的后16位作为cipher。
+     * @param pin
+     * @return
+     */
     private String getSecretCipher(String pin) {
         try {
             return pin.substring(16, 32);
@@ -158,10 +177,12 @@ public abstract class BaseDeviceLoginHanlder<Req extends DeviceLoginDataDto, Res
     private ServerToDeviceRespDto initServerRespDto(ServerToDeviceDataDto respDataDto, String key, String cipher) {
         ServerToDeviceRespDto result = new ServerToDeviceRespDto(respDataDto.getResultCode()
                 + CommonConstant.Str.EMPTY, respDataDto.getDn());
-//        result.setCode(this.getResponseCode());
+        result.setCode(this.getResponseCode());
         String respDataStr = JSON.toJSONString(respDataDto);
         LOGGER.debug("[initServerRespDto] respDataStr = {}.", respDataStr);
+
         // TODO-Brisk 处理数据加密
+
         result.setData(respDataStr);
 
         return result;
