@@ -66,12 +66,12 @@ public class LoginClient {
                         ChannelPipeline pipeline = socketChannel.pipeline();
                         //接收
                         pipeline.addLast(new LineBasedFrameDecoder(BusinessConstant.Netty.NETTY_MAX_FRAME_SIZE));
-                        pipeline.addLast(new MessageDecoder());
+                        pipeline.addLast("decoder", new MessageDecoder());
 
                         // 发送
-                        pipeline.addLast(new MessageEecoder());
+                        pipeline.addLast("encoder", new MessageEecoder());
                         pipeline.addLast("timeout", new IdleStateHandler(readerIdleTimeSeconds, writerIdleTimeSeconds, allIdleTimeSeconds));
-                        pipeline.addLast(new DeviceChannelInboundHandler());
+                        pipeline.addLast("handler", new DeviceChannelInboundHandler());
                     }
                 });
 

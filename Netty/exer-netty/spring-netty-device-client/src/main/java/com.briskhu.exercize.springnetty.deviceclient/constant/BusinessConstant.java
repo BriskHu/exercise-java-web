@@ -16,7 +16,7 @@ public interface BusinessConstant {
         /**
          * netty消息起始标志
          */
-        String NETTY_MSG_HEADER = "EBD";
+        String NETTY_MSG_HEADER = "EBDM";
         /**
          * netty消息结束标志
          */

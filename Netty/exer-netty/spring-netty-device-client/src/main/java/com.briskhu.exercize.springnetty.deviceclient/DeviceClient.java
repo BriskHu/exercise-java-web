@@ -1,6 +1,6 @@
 package com.briskhu.exercize.springnetty.deviceclient;
 
-import com.briskhu.exercize.springnetty.deviceclient.dto.DeviceLoginInfoDto;
+import com.briskhu.exercize.springnetty.deviceclient.dto.DeviceLoginDataDto;
 import com.briskhu.exercize.springnetty.deviceclient.dto.DeviceLoginReqDto;
 import com.briskhu.exercize.springnetty.deviceclient.netty.LoginClient;
 import com.briskhu.exercize.springnetty.deviceclient.util.PropertiesUtil;
@@ -42,7 +42,9 @@ public class DeviceClient {
         Channel channel = loginClient.connect(loginHost);
         if (channel != null){
             DeviceLoginReqDto deviceLoginReqDto = initDeviceLoginReqDto();
+
             // TODO-Brisk 处理数据加密
+
             LOGGER.debug("[deviceLogin] 设备登录发送数据：deviceLoginReqDto = {}.", deviceLoginReqDto);
             channel.writeAndFlush(deviceLoginReqDto.toTransDto()).sync();
         }
@@ -50,12 +52,14 @@ public class DeviceClient {
 
     private DeviceLoginReqDto initDeviceLoginReqDto(){
         DeviceLoginReqDto deviceLoginReqDto = new DeviceLoginReqDto();
-        deviceLoginReqDto.setCode("1001");
+        deviceLoginReqDto.setCode("700101");
         deviceLoginReqDto.setDn(dn);
 
-        DeviceLoginInfoDto loginInfoDto = new DeviceLoginInfoDto();
+        DeviceLoginDataDto loginInfoDto = new DeviceLoginDataDto();
         loginInfoDto.setDn(dn);
         loginInfoDto.setMac(mac);
+        loginInfoDto.setIp("127.0.0.1");
+        loginInfoDto.setPin(pin);
         deviceLoginReqDto.setData(loginInfoDto.toString());
 
         return deviceLoginReqDto;

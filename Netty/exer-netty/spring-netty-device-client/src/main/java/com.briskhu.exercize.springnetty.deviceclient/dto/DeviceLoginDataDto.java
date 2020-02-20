@@ -12,12 +12,17 @@ import java.io.Serializable;
  * created on 2020-01-08
  **/
 @Data
-public class DeviceLoginInfoDto implements Serializable {
+public class DeviceLoginDataDto implements Serializable {
     private static final long serialVersionUID = -1502651118843534491L;
 
     private String dn;
 
+    private String pin;
+
     private String mac;
+
+    private String ip;
+
 
     public Object toTransDto(){
         return this;
