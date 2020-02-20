@@ -27,6 +27,10 @@ public interface RedisKey {
         String F_DN = "dn";
         String F_PIN = "pin";
         String F_MAC = "mac";
+        String F_SESSION_KEY = "sessionKey";
+        String F_TOKEN = RedisKey.F_TOKEN;
+        String F_CIPHER = "cipher";
+        String F_IP = RedisKey.F_IP;
 
 
         /**
@@ -47,12 +51,20 @@ public interface RedisKey {
         /**
          * 设备基础信息 —— hash
          * key：$+{dn}
-         * field-value: pin  pin(String)
-         * field-value: mac  mac(String)
+         * field-value: pin  {pin}(String)
+         * field-value: mac  {mac}(String)
          *
          */
-        String D_BASE = COMMON_PREFIX + "d:base:"; 
+        String D_BASE = COMMON_PREFIX + "d:base:";
 
+        /**
+         * 设备会话信息 —— hash
+         * key：$+{dn}
+         * field-value: token  {deviceConnectToken}(String)
+         * field-value: sessionKey  {sessionKey}(String)
+         *
+         */
+        String D_SESSION = COMMON_PREFIX + "d:session:";
 
     }
 }

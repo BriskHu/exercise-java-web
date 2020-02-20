@@ -41,7 +41,7 @@ public class NettyMessageEncoder extends MessageToMessageEncoder<Object> {
     protected void encode(ChannelHandlerContext channelHandlerContext, Object msg, List<Object> outList) throws Exception {
         if (msg != null) {
             String msgStr = JSON.toJSONString(msg);
-            msgStr += BusinessConstant.MessageConstant.NETTY_MSG_TAIL;
+            msgStr = BusinessConstant.MessageConstant.NETTY_MSG_HEADER + msgStr + BusinessConstant.MessageConstant.NETTY_MSG_TAIL;
             outList.add(Unpooled.copiedBuffer(msgStr, this.charset));
         }
 

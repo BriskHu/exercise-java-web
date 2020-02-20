@@ -26,13 +26,13 @@ public interface BusinessConstant {
         /**
          * netty消息起始标志
          */
-        String NETTY_MSG_HEADER = "EBD";
+        String NETTY_MSG_HEADER = "EBDM";
         /**
          * netty消息结束标志
          */
         String NETTY_MSG_TAIL = "\r\n";
 
-        byte[] NETTY_MSG_HEADER_BYTES = {'E', 'B', 'M'};
+        byte[] NETTY_MSG_HEADER_BYTES = {'E', 'B', 'D', 'M'};
         byte[] NETTY_MSG_TAIL_BYTES = {'\r', '\n'};
 
         /**

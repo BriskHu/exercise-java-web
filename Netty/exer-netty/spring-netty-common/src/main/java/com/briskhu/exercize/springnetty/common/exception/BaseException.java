@@ -5,6 +5,7 @@ import com.briskhu.exercize.springnetty.common.constant.MsgCode;
 import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.StringUtils;
 
 /**
  * <p/>
@@ -17,7 +18,7 @@ public abstract class BaseException extends RuntimeException{
     private static final Logger LOGGER = LoggerFactory.getLogger(BaseException.class);
 
     /* ---------------------------------------- fileds ---------------------------------------- */
-    protected IMsgCode msgCode;
+    public IMsgCode msgCode;
 
 
     /* ---------------------------------------- methods ---------------------------------------- */
@@ -38,4 +39,9 @@ public abstract class BaseException extends RuntimeException{
         this.msgCode = msgCode;
     }
 
+
+    @Override
+    public String getMessage() {
+        return StringUtils.isEmpty(super.getMessage()) ? this.msgCode.getMsg() : super.getMessage();
+    }
 }

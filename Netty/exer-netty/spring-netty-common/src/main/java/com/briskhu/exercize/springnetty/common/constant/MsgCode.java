@@ -18,6 +18,7 @@ package com.briskhu.exercize.springnetty.common.constant;
  | 1      | 00        | 2      | xx        | 设备基础信息消息码        |
  | 3      | 00        | 1      | xx        | 参数校验不通过        |
  | 5      | 00        | 1      | xx        | 参数校验不通过        |
+ | 7      | 00        | 0      | xx        | Netty通信的基础消息码    |
  | 7      | 00        | 1      | xx        | 设备与连接组件之间的通信消息码    |
  | 7      | 00        | 2      | xx        | App服务组件与连接组件之间的通信消息码    |
  * </pre>
@@ -30,28 +31,28 @@ public interface MsgCode {
     /**
      * 平台通用基础消息码的第一位
      */
-    int PLATFORM_BASE = 1;
+    int PLATFORM_BASE = 100000;
     /**
      * App服务组件请求应答消息码的第一位
      */
-    int APP_SERVER = 3;
+    int APP_SERVER = 300000;
     /**
      * 设备连接服务组件请求应答消息码的第一位
      */
-    int CONNECT_SERVER = 5;
+    int CONNECT_SERVER = 500000;
     /**
      * 设备与连接服务组件之间的通信消息码的第一位
      */
-    int DEVICE_CONNECTOR = 7;
+    int DEVICE_CONNECTOR = 700000;
 
 
     enum Common implements IMsgCode {
         // TODO-note 目前整个平台成功的消息码共用 Common.SUCCESS。
         // 后期若有模块需要新的操作成功的消息码，则在该模块覆盖掉公共的消息即可。
         SUCCESS(0, "操作成功"),
-        PARAM_VALUE_INVALID(PLATFORM_BASE + 00100, "参数值非法"),
-        PARAM_FORM_INVALID(PLATFORM_BASE + 00101, "参数格式非法"),
-        PARAM_NULL(PLATFORM_BASE + 00101, "必传参数为空"),
+        PARAM_VALUE_INVALID(PLATFORM_BASE + 00 + 100, "参数值非法"),
+        PARAM_FORM_INVALID(PLATFORM_BASE + 00 + 101, "参数格式非法"),
+        PARAM_NULL(PLATFORM_BASE + 00 + 102, "必传参数为空"),
 
 
         UNKNOWN_ERR(999999, "发生未知错误"),
@@ -90,9 +91,9 @@ public interface MsgCode {
      */
     enum Device implements IMsgCode {
         // 设备基础信息消息码
-        DN_ERR(PLATFORM_BASE + 00200, "设备dn值错误"),
-        PIN_ERR(PLATFORM_BASE + 00201, "设备pin值错误"),
-        MAC_ERR(PLATFORM_BASE + 00202, "设备mac值错误"),
+        DN_ERR(PLATFORM_BASE + 00 + 200, "设备dn值错误"),
+        PIN_ERR(PLATFORM_BASE + 00 + 201, "设备pin值错误"),
+        MAC_ERR(PLATFORM_BASE + 00 + 202, "设备mac值错误"),
 
         // “;”不可少
         ;
@@ -129,15 +130,15 @@ public interface MsgCode {
      */
     enum Netty implements IMsgCode {
         // 设备与连接组件之间的通信消息码
-        DEVICE_LOGIN_TOSERVER(DEVICE_CONNECTOR + 00101, "设备登录时发送的消息码"),
-        DEVICE_LOGIN_TODEVICE(DEVICE_CONNECTOR + 00102, "设备登录后服务器的返回码"),
+        DEVICE_LOGIN_TOSERVER(DEVICE_CONNECTOR + 101, "设备登录时发送的消息码"),
+        DEVICE_LOGIN_TODEVICE(DEVICE_CONNECTOR + 102, "设备登录后服务器的返回码"),
 
         // App服务组件与连接组件之间的通信消息码
-        APP_SERVER_CONNECT(DEVICE_CONNECTOR + 00200, "App服务组件连接"),
+        APP_SERVER_CONNECT(DEVICE_CONNECTOR + 200, "App服务组件连接"),
 
 
-        CONN_SUCCESS(100000, "netty连接成功"),
-        CONN_FAIL(100001, "netty连接失败"),
+        CONN_SUCCESS(DEVICE_CONNECTOR + 0, "netty连接成功"),
+        CONN_FAIL(DEVICE_CONNECTOR + 1, "netty连接失败"),
 
         // “;”不可少
         ;
