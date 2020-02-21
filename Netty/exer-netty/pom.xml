@@ -21,11 +21,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+        <springboot.version>2.2.1.RELEASE</springboot.version>
     </properties>
 
     <modules>
         <module>spring-netty</module>
-        <module>spring-netty-server</module>
+        <module>spring-netty-device-manager</module>
         <module>spring-netty-client</module>
         <module>spring-netty-common</module>
         <module>spring-netty-device-client</module>
@@ -37,7 +38,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
-                <version>${parent.version}</version>
+                <version>${springboot.version}</version>
             </dependency>
 
             <dependency>
@@ -62,6 +63,18 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>1.2.62</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>1.1.21</version>
+            </dependency>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.19</version>
             </dependency>
 
             <dependency>

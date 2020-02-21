@@ -1,4 +1,4 @@
-package com.briskhu.exercize.springnetty.common.dto.req.device;
+package com.briskhu.exercize.springnetty.common.dto.req.device.netty;
 
 import com.alibaba.fastjson.JSON;
 import lombok.Data;

@@ -28,16 +28,11 @@ public class ValidateUtil {
      * @param obj
      * @param msg 对象为空时，提示信息。
      */
-    public static SettableListenableFuture notEmptyForFuture(Object obj, String msg){
+    public static void notEmptyForFuture(Object obj, String msg){
         if (StringUtils.isEmpty(obj)){
             LOGGER.error(msg);
-            return new SettableListenableFuture<DeviceLoginRespData>() {
-                {
-                    setException(new ApiException(MsgCode.Common.PARAM_NULL));
-                }
-            };
+            throw new ApiException(MsgCode.Common.PARAM_NULL);
         }
-        return null;
     }
 
 
