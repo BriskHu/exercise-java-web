@@ -1,6 +1,6 @@
 package com.briskhu.exercize.springnetty.loginserver.handler;
 
-import com.briskhu.exercize.springnetty.common.dto.req.device.DeviceLoginReqDto;
+import com.briskhu.exercize.springnetty.common.dto.req.device.netty.DeviceLoginReqDto;
 import com.briskhu.exercize.springnetty.common.dto.resp.server.ServerToDeviceRespDto;
 import org.springframework.util.concurrent.ListenableFuture;
 

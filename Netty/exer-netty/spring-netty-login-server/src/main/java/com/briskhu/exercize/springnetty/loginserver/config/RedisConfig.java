@@ -44,7 +44,7 @@ public class RedisConfig {
         template.setHashValueSerializer(jackson2JsonRedisSerializer);
         template.afterPropertiesSet();
 
-        LOGGER.debug("[channelRead0] dbsize = {}.", factory.getConnection().dbSize());
+        LOGGER.debug("[redisTemplate] dbsize = {}.", factory.getConnection().dbSize());
 
         return template;
     }

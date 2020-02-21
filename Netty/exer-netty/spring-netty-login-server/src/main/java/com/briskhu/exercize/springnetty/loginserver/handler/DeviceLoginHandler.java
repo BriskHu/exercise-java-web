@@ -3,7 +3,7 @@ package com.briskhu.exercize.springnetty.loginserver.handler;
 import com.briskhu.exercize.springnetty.common.constant.MsgCode;
 import com.briskhu.exercize.springnetty.common.constant.RedisKey;
 import com.briskhu.exercize.springnetty.common.dto.info.device.DeviceSessionInfo;
-import com.briskhu.exercize.springnetty.common.dto.req.device.DeviceLoginDataDto;
+import com.briskhu.exercize.springnetty.common.dto.req.device.netty.DeviceLoginDataDto;
 import com.briskhu.exercize.springnetty.common.dto.resp.server.DeviceLoginRespData;
 import com.briskhu.exercize.springnetty.common.exception.ApiException;
 import com.briskhu.exercize.springnetty.common.util.AesEncryptUtil;

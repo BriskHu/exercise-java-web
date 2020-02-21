@@ -1,7 +1,7 @@
 package com.briskhu.exercize.springnetty.loginserver.netty;
 
 import com.alibaba.fastjson.JSON;
-import com.briskhu.exercize.springnetty.common.dto.req.device.DeviceLoginReqDto;
+import com.briskhu.exercize.springnetty.common.dto.req.device.netty.DeviceLoginReqDto;
 import com.briskhu.exercize.springnetty.common.constant.CommonConstant;
 import com.briskhu.exercize.springnetty.common.constant.RedisKey;
 import com.briskhu.exercize.springnetty.common.constant.MsgCode;
