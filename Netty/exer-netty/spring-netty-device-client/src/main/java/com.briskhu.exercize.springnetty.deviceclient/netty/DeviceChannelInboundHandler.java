@@ -37,6 +37,11 @@ public class DeviceChannelInboundHandler extends SimpleChannelInboundHandler<Obj
             // 返回值为服务器返回Dto，则进一步处理具体业务
             if (response != null){
                 String code = response.getCode();
+
+                if (code.equals("700102")){
+                    String respData = response.getData();
+
+                }
             }
         }
         // 非String类型消息不处理

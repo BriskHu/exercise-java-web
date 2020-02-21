@@ -20,5 +20,8 @@ public interface BusinessConstant {
         /**
          * netty消息结束标志
          */
-        String NETTY_MSG_TAIL = "\r\n";    }
+        String NETTY_MSG_TAIL = "\r\n";
+
+        
+    }
 }

@@ -19,6 +19,8 @@ public class ServerToDeviceRespDto implements Serializable {
 
     private String data;
 
+    private String dn;
+
     public Object toTransDto(){
         return this;
     }
