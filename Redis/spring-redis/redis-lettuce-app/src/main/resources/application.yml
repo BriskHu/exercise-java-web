@@ -1,0 +1,17 @@
+
+spring:
+  application:
+    name: RedisLettuceApp
+  profiles: dev
+
+  redis:
+    host: 127.0.0.1
+    password:
+    port: 6379
+    database: 8
+    timeout: 3000ms
+    lettuce:
+      pool:
+        max-active: 10
+        min-idle: 5
+        max-wait: 3000ms
