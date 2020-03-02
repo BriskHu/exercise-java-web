@@ -14,8 +14,16 @@ import java.io.Serializable;
 public class Coordinate implements Serializable {
     private static final long serialVersionUID = 5987178205937884540L;
 
-    private Long longitude;
+    private Float longitude;
 
-    private Long latitude;
+    private Float latitude;
+
+    /**
+     * 获取坐标字符串
+     * @return 返回字符串的格式为：“(经度,纬度)”。注意是英文括号。
+     */
+    public String getCoordinateString(){
+        return "(" + this.latitude + "," + this.longitude + ")";
+    }
 
 }
