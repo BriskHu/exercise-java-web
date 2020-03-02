@@ -1,0 +1,24 @@
+nettyClient:
+  port: 9918
+  bossCount: 1
+  workerCount: 10
+
+loginHost:
+  127.0.0.1:9918
+
+dn: 51010120191118000001
+pin: 01234567890123456789012345678901
+mac: 005056C00008
+
+reader:
+  idle:
+    time:
+      seconds: 30
+writer:
+  idle:
+    time:
+      seconds: 0
+all:
+  idle:
+    time:
+      seconds: 30
