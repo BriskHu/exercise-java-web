@@ -1,5 +1,6 @@
 package com.briskhu.exercize.springnetty.common.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -11,6 +12,7 @@ import java.io.Serializable;
  * created on 2020-02-22
  **/
 @Data
+@TableName(value = "t_device_info")
 public class DeviceInfo implements Serializable {
     private static final long serialVersionUID = -5397354271303004163L;
 

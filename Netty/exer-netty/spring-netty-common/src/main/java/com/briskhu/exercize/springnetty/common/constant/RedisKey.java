@@ -27,6 +27,7 @@ public interface RedisKey {
         String F_DN = "dn";
         String F_PIN = "pin";
         String F_MAC = "mac";
+        String F_LOCATION = "location";
         String F_SESSION_KEY = "sessionKey";
         String F_TOKEN = RedisKey.F_TOKEN;
         String F_CIPHER = "cipher";
@@ -53,6 +54,7 @@ public interface RedisKey {
          * key：$+{dn}
          * field-value: pin  {pin}(String)
          * field-value: mac  {mac}(String)
+         * field-value: location  {location}(String)
          *
          */
         String D_BASE = COMMON_PREFIX + "d:base:";

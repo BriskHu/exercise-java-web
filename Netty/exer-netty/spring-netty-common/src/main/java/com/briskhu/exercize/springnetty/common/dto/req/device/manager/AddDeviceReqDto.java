@@ -23,7 +23,7 @@ public class AddDeviceReqDto implements Serializable {
     private String dn;
 
     @NotBlank(message = "设备pin码不能为空")
-    @Pattern(regexp = "\\s{32,32}", message = "设备pin码长度不合法")
+    @Pattern(regexp = "\\S{32,32}", message = "设备pin码长度不合法")
     private String pin;
 
     @Pattern(regexp = "[0-9a-fA-F]{12,12}")
